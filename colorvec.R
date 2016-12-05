@@ -1,3 +1,8 @@
+##########################################################################################################
+##	Displays vectos between each corresponding points of two topologies,				##
+##	color of the vector is proportional to the distance. 						##
+##	Coloration by distance can be modified to something else like PCA loadings			##
+##########################################################################################################
 colorvec<-function(topo1,topo2,palet="blue2red",intervales=100)
 {
 	require(colorRamps)
