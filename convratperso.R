@@ -1,10 +1,10 @@
 ##########################################################################################
 ##########################################################################################
-###			rewriting of Stayton's (2014) function convrat, 		##
-###			implement some Liam Revell code http://blog.phytools.org/ 	##
-###			Analysis from Botton-Divet et al. 2016 				##
-###			please contact lbottondivet@mnhn.fr if needed			##
-###			or visit https://github.com/leobd 				##
+###		rewriting of Stayton's function convrat (convevol R package; 2014), 	##
+###		implement some Liam Revell code http://blog.phytools.org/ 		##
+###		Analysis from Botton-Divet et al. 2016 					##
+###		please contact lbottondivet@mnhn.fr if needed				##
+###		or visit https://github.com/leobd 					##
 ##########################################################################################
 ##########################################################################################
 	
