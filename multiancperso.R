@@ -1,9 +1,9 @@
 ##########################################################################################
 ##########################################################################################
-###			              Stayton's multianc (2014) parallelized	              	      		##
-###		              	from Botton-Divet et al. 2016 				                          	##
-###			              please contact lbottondivet@mnhn.fr if needed		                	##
-###			              or visit https://github.com/leobd 				                        ##
+###			            Stayton's multianc (convevol R package; 2014) parallelized		##
+###		              	from Botton-Divet et al. 2016 				                   	##
+###			            please contact lbottondivet@mnhn.fr if needed		           	##
+###			            or visit https://github.com/leobd 				                ##
 ##########################################################################################
 ##########################################################################################
 
