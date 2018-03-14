@@ -1,7 +1,7 @@
 ################################################################################################
-## Rewritting of a part of Tristan Stayton's 'convrat' R function from the 'convevol' library ##
-##                       Workhorse for the convratparr function                               ##
-##              implement some Liam Revell code http://blog.phytools.org/ 	              ##
+## Rewritting of a part of Tristan Stayton's 'convrat' R function (convevol R package; 2014)  ##
+##                       Workhorse for the 'convratpar' function                              ##
+##               implement some Liam Revell code http://blog.phytools.org/ 	              ##
 ################################################################################################
 
 uniconvrat<-function(phyl,phentot,convtips)
