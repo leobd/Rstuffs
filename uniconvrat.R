@@ -1,17 +1,18 @@
-#############################################################################################
-## Rewritting of a part of Tristan Stayton's 'convrat' R function from the 'convevol' library
-## Workhorse for the convratparr function
-#############################################################################################
+################################################################################################
+## Rewritting of a part of Tristan Stayton's 'convrat' R function from the 'convevol' library ##
+##                       Workhorse for the convratparr function                               ##
+##              implement some Liam Revell code http://blog.phytools.org/ 	              ##
+################################################################################################
 
 uniconvrat<-function(phyl,phentot,convtips)
 {
-##recup des index numeriques sur l'axe
+## Getting numerical indexes
 conv1<-convtips[1]
 conv2<-convtips[2]
 ifelse(is.character(conv1)==T,tipvalue1<-which(phyl[["tip.label"]]==conv1),tipvalue1<-conv1)
 ifelse(is.character(conv2)==T,tipvalue2<-which(phyl[["tip.label"]]==conv2),tipvalue2<-conv2)
 
-##calcul lignées
+## Compute lineages
 mrcatips<-getMRCA(phyl, convtips)
 
 	i=tipvalue1
@@ -32,16 +33,16 @@ mrcatips<-getMRCA(phyl, convtips)
 			j<-ancestor
 		}
 		
-##calcul des distances entre tt les nodes
+## Computation of the phenotypic distances
 	dt<-dist(phentot[unique(c(lineage1,lineage2)),])
 
-##recup valeurs max
+## Extraction of maximal values
 	maxval<-dt[which.max(dt)]
 	tipdist<-dist(phentot[convtips,])
-
 	C1<-1-(tipdist/maxval)
 	C2<-maxval-tipdist
-##phendist in branches along lineages
+	
+## Computation of phenotypic distances branches along lineages
 distlineage1<-0
 for (i in 1:(length(lineage1)-1))
 	{
@@ -56,9 +57,9 @@ for (i in 1:(length(lineage2)-1))
 
 C3<-C2/(distlineage1+distlineage2)
 
-##phendist totale dans le sous arbre definit par le MRCA
+## Computation of the total phenotypic distances in the lineages defined by MRCA of convergent tips
 
-	getDescendants<-function(tree,node,curr=NULL){				##Fonction tirée du blog de Revell
+	getDescendants<-function(tree,node,curr=NULL){				##Fonction from Liam Revell's blog http://blog.phytools.org/
 	if(is.null(curr)) curr<-vector()
 	daughters<-tree$edge[which(tree$edge[,1]==node),2]
 	curr<-c(curr,daughters)
@@ -71,14 +72,13 @@ C3<-C2/(distlineage1+distlineage2)
 subtr<-getDescendants(phyl,mrcatips)
 
 a<-list()
-for (i in 1:length(subtr))		##ça vas etre MOCHE >:D
+for (i in 1:length(subtr))		
 	{
 	a[[i]]<-(which(phyl[["edge"]][,1]==subtr[i]|phyl[["edge"]][,2]==subtr[i]))
 	}
 phy2dist<-unique(unlist(a))
 
-## calcul de la distance totale dans le sous arbre defini par le MRCA, toute les branches, y compris celles hors ligné tip-MRCA 
-distsub<-NULL
+## Computation of the total phenotypic distances in the subtree defined by MRCA, including side branches that are not part of tips lineagedistsub<-NULL
 for(i in 1:length(phy2dist))
 	{
 	distsub[i]<-dist(rbind(phentot[phyl$edge[phy2dist,][i,1],],phentot[phyl$edge[phy2dist,][i,2],]))
